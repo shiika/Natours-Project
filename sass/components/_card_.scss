@@ -1,0 +1,174 @@
+.card {
+    position: relative;
+    perspective: 1500px;
+    height: 52rem;
+
+    &__side {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        color: $color-white;
+        width: 100%;
+        backface-visibility: hidden;
+        transition: all .9s;
+        border-radius: 3px;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+
+        &--front {
+            background-color: $color-white;
+        }
+
+        &--back {
+            transform: rotateY(180deg);
+
+            &-1 {
+                background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+            }
+
+            &-2 {
+                background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+            }
+
+            &-3 {
+                background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark);
+            }
+
+        }
+
+        &--box {
+            @include ab-center;
+            width: 100%;
+
+            .only-text {
+                font-size: 1.4rem;
+            }
+
+            .price {
+                font-size: 6rem;
+                font-weight: 100;
+                margin-bottom: 8rem;
+            }
+        }
+
+    }
+
+    &:hover &__side--front {
+        transform: rotateY(-180deg);
+    }
+
+    &:hover &__side--back {
+        transform: rotateY(0)
+    }
+
+    &__picture {
+        height: 23rem;
+        background-size: cover;
+        background-blend-mode: screen;
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+        &-1 {
+            background-image: url(../img/nat-5.jpg), linear-gradient($color-secondary-light, $color-secondary-dark);
+        }
+
+        &-2 {
+            background-image: url(../img/nat-6.jpg), linear-gradient($color-primary-light, $color-primary-dark);
+        }
+
+        &-3 {
+            background-image: url(../img/nat-7.jpg), linear-gradient($color-tertiary-light, $color-tertiary-dark);
+        }
+    }
+
+    &__heading {
+        position: absolute;
+        top: 12rem;
+        right: 2rem;
+        text-transform: uppercase;
+        font-size: 2.8rem;
+        font-weight: 300;
+        width: 75%;
+        text-align: right;
+
+        span {
+            padding: 1rem 1.5rem;
+            box-decoration-break: clone;
+        }
+
+        &-1 {
+            background-image: linear-gradient(rgba($color-secondary-light, .85), rgba($color-secondary-dark, .85));
+        }
+
+        &-2 {
+            background-image: linear-gradient(rgba($color-primary-light, .85), rgba($color-primary-dark, .85));
+        }
+
+        &-3 {
+            background-image: linear-gradient(rgba($color-tertiary-light, .85), rgba($color-tertiary-dark, .85));
+        }
+    }
+
+    &__details {
+        padding: 3rem;
+        color: $color-grey-dark;
+
+        ul {
+            list-style: none;
+            width: 80%;
+            margin: auto;
+
+            li {
+                padding: 1rem;
+                &:not(:last-child) {
+                    border-bottom: 1px solid #eee;
+                }
+            }
+        }
+    }
+
+    @include respond(tab-port) {
+        height: auto;
+        background-color: $color-white;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+        border-radius: .3rem;
+
+        &__side {
+            position: relative;
+            height: auto;
+            box-shadow: none;
+            border-radius: none;
+
+            &--back {
+                transform: rotateY(0);
+                clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+
+            }
+
+            &--box {
+                position: relative;
+                top: 0;
+                left: 0;
+                transform: translate(0);
+                padding: 7rem 4rem 4rem;
+
+                .only-text {
+                    font-size: 1.4rem;
+                }
+
+                .price {
+                    font-size: 5rem;
+                    margin-bottom: 3rem;
+                }
+            }
+        }
+
+        &__details {
+            padding: 0 3rem;
+        }
+
+        &:hover &__side--front {
+            transform: rotateY(0);
+        }
+    }
+
+}
