@@ -4,10 +4,13 @@
   "description": "Advanced CSS and Sass",
   "main": "index.js",
   "scripts": {
-    "compile:sass": "sass -w sass/main.scss:css/style.css"
+    "compile:sass": "sass -w sass/main.scss:css/style.css",
+    "lite": "lite-server",
+    "deploy": "gh-pages -d dist"
   },
   "author": "Islam Abdelkarim",
   "license": "ISC",
+  "homepage": "https://natours.github.io/natours-project",
   "devDependencies": {
     "lite-server": "^2.3.0",
     "sass": "^1.5.1"
