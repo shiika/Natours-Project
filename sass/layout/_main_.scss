@@ -1,0 +1,96 @@
+.about-section {
+    background-color: $color-grey-light-1;
+    padding: 25rem 0;
+    margin-top: -20vh;
+
+    @include respond(tab-port) {
+        padding: 20rem 0;
+    }
+}
+
+.features-section {
+    background: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url(../../img/nat-4.jpg);
+    background-position: top;
+    background-size: cover;
+    padding: 20rem 0;
+    transform: skewY(-7deg);
+    & > div {
+        transform: skewY(7deg);
+    }
+
+    @include respond(tab-port) {
+        padding: 10rem 0;
+    }
+}
+
+.tours-section {
+    background-color: $color-grey-light-1;
+    padding: 25rem 0 15rem;
+    margin-top: -8rem;
+    text-align: center;
+
+    &:target ~ .popup {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    @include respond(tab-port) {
+        padding: 20rem 0 15rem;
+    }
+
+}
+
+.stories-section {
+    padding: 15rem 0;
+    text-align: center;
+    position: relative;
+
+    @include respond(tab-port) {
+        padding: 10rem 0;
+    }
+}
+
+.book-section {
+    background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+    padding: 15rem 0;
+
+    @include respond(tab-port) {
+        padding: 10rem 0;
+    }
+    .book {
+        background-image: url(../../img/nat-10.jpg);
+        background-size: cover;
+        width: 100%;
+        border-radius: 5px;
+
+        @include respond(tab-land) {
+            width: 87%;
+            margin: 0 auto
+        }
+
+        @include respond(tab-port) {
+            width: 100%;
+        }
+
+        &__form {
+            background-color: rgba($color-white, .9);
+            clip-path: polygon(0 0, 100% 0, 78% 101%, 0 101%);
+            width: 56.4%;
+            height: 100%;
+            padding: 6rem;
+            border-radius: 5px;
+
+            @include respond(tab-land) {
+                width: 70%;
+            }
+
+            @include respond(tab-port) {
+                width: 100%;
+                clip-path: none;
+            } // @include respond(tab-land) {
+            //     clip-path: none;
+            //     width: 100%;
+            // }
+        }
+    }
+}

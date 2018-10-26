@@ -1,0 +1,149 @@
+.navigation {
+    background-color: transparent;
+    position: fixed;
+    z-index: 1000;
+
+    input {
+        display: none;
+
+        &:checked + .navigation__effect {
+            transform: scale(80);
+        }
+
+        &:checked ~ .navigation__background {
+            left: 0;
+            width: 100%;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        &:checked ~ .navigation__background .navigation__item {
+            &__link {
+                cursor: pointer;
+            }
+        }
+
+        &:checked ~ .navigation__btn .navigation__link .navigation__link__icon { background-color: transparent; }
+        &:checked ~ .navigation__btn .navigation__link .navigation__link__icon::before { top: 0; transform: rotate(135deg); }
+        &:checked ~ .navigation__btn .navigation__link .navigation__link__icon::after { top: 0; transform: rotate(-135deg); }
+    }
+
+    &__effect {
+        height: 6.5rem;
+        width: 6.5rem;
+        border-radius: 50%;
+        display: inline-block;
+        background-image: radial-gradient($color-primary-light, $color-primary-dark);
+        position: fixed;
+        top: 6.3rem;
+        right: 6.3rem;
+        transition: all .7s ease-in-out;
+
+        @include respond(tab-port) {
+            top: 3.2rem;
+            right: 3.2rem;
+        }
+    }
+
+    &__btn {
+        height: 7rem;
+        width: 7rem;
+        border-radius: 50%;
+        background-color: $color-white;
+        position: fixed;
+        top: 6rem;
+        right: 6rem;   
+        cursor: pointer; 
+        z-index: 2000;
+        box-shadow: 0 1rem 3rem rgba($color-black, .1);
+
+        @include respond(tab-port) {
+            top: 3rem;
+            right: 3rem;
+        }
+
+        &:hover .navigation__link .navigation__link__icon::before { top: -1rem; }
+        &:hover .navigation__link .navigation__link__icon::after { top: 1rem; }
+    }
+
+    &__link {
+            display: block;
+            @include ab-center;
+        
+        &__icon {
+            display: block;
+            height: .2rem;
+            width: 3rem;
+            background-color: $color-black;
+            position: relative;
+
+            &::before,
+            &::after {
+                content: "";
+                display: block;
+                width: 3rem;
+                height: .2rem;
+                background-color: $color-black;
+                position: absolute;
+                transition: all .2s;
+            }
+
+            &::before { top: -.8rem;} &::after { top: .8rem;}
+        }
+        
+    }
+
+    
+    &__background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: transparent;
+        height: 100vh;
+        width: 33%;
+        opacity: 0;
+        visibility: hidden;
+        transition: all .7s cubic-bezier(.43,-0.49,.6,1.46);
+        z-index: 1500;
+    }
+
+    &__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    &__item {
+        
+        &__link {
+            display: inline-block;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: $color-white;
+            font-size: 3rem;
+            padding: 1rem 2rem;
+            font-weight: 300;
+            cursor: default;
+            margin: 1rem;
+            background-image: linear-gradient(120deg, transparent 50%, $color-white 50%);
+            background-size: 220%;
+            transition: all .4s;
+
+            &:hover {
+                background-position: 100%;
+                color: $color-primary-light;
+                transform: translateX(1rem);
+            }
+
+            span {
+                margin-right: 1rem
+            }
+        }
+    }
+}
